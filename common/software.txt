@@ -1,0 +1,90 @@
+东方： 603014945841
+
+v8 libuv
+
+
+make android PRJ= APPID=5000 DEBUG=0
+
+
+global.gameInfo.status = 1
+
+lua代码打包
+make luac_a zip_name=QuizInfo
+make luac_player zip_name=QuizInfo
+
+javac中文乱码
+export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8
+
+
+git 
+获取远程分支到本地
+git checkout -b local-branchname origin/remote-branchname
+
+IW8rCsjq5WMgYbJI
+
+
+pz@ss2468
+
+
+Qaz123wsx
+ 
+
+软件安装
+
+brew
+curl -LsSf http://github.com/mxcl/homebrew/tarball/master | sudo tar xvz -C/usr/local --strip 1
+
+git 
+https://git-scm.com/download/mac
+
+
+
+brew install报错
+error: could not lock config file .git/config: Permission denied
+sudo chgrp -R admin /usr/local
+sudo chmod -R g+w /usr/local
+
+
+1: Linux升级安装GCC
+https://itbilu.com/linux/management/V1vdnt9ll.html
+下载资源，解压
+下载gcc依赖文件和库
+配置安装gcc
+验证安装
+
+gcc新版本的动态库替换系统中老版本的动态库
+https://itbilu.com/linux/management/NymXRUieg.html
+
+node-gyp rebuild
+
+
+2: pm2启动node进程
+pm2 start main.js --name "name"
+
+3: Node.js项目的依赖管理 
+https://cnodejs.org/topic/52dcc0a578990b04112e2f09
+
+
+/data/project/t_proxy/rel/t_proxy/bin/t_proxy start
+/data/project/t_proxy/rel/t_proxy/bin/t_proxy stop
+
+
+root     10212  9854  0 17:51 pts/11   00:00:00 grep --color=auto t_proxy
+root     14118     1  0 Jan01 ?        00:00:31 /data/project/t_proxy/rel/t_proxy/erts-5.10.3/bin/epmd -daemon
+root     14125     1  0 Jan01 ?        00:00:01 /data/project/t_proxy/rel/t_proxy/erts-5.10.3/bin/run_erl -daemon /tmp//data/project/t_proxy/rel/t_proxy/ /data/project/t_proxy/rel/t_proxy/log exec /data/project/t_proxy/rel/t_proxy/bin/t_proxy console \'\'
+root     14126 14125  3 Jan01 pts/5    1-10:51:53 /data/project/t_proxy/rel/t_proxy/erts-5.10.3/bin/beam.smp -- -root /data/project/t_proxy/rel/t_proxy -progname t_proxy -- -home /root -- -boot /data/project/t_proxy/rel/t_proxy/releases/1/t_proxy -mode embedded -config /data/project/t_proxy/rel/t_proxy/releases/1/sys.config -name t_proxy@127.0.0.1 -setcookie t_proxy -- console ''
+
+
+
+4:  安装eslint插件
+npm install eslint-config-airbnb eslint@^3.15.0 eslint-plugin-jsx-a11y@^3.0.2 eslint-plugin-import@^2.2.0 eslint-plugin-react@^6.9.0 -g
+
+
+5:  下载Atom
+https://github.com/atom/atom/releases/tag/v1.12.7
+
+ Visual Studio 2017 Key
+Enterprise:
+NJVYC-BMHX2-G77MM-4XJMR-6Q8QF
+Professional
+KBJFW-NXHK6-W4WJM-CRMQB-G3CDH

@@ -1,0 +1,16 @@
+343515875    宁静致远
+
+
+database
+要从关系数据库的ACID维度和关系代数来区分了，nosql一般通过最终一致性得到更好的写入性能和延时，适合社交或日志类应用；但对于在线交易类应用，关系数据库中的事物和强一致性比性能重要；另外，关系数据库多表之间运算基于严谨的关系代数，且通过SQL语言支持丰富的语义
+
+
+ln -s /usr/local/bin/git /usr/bin/git
+
+
+
+
+http://www.cnblogs.com/winner/archive/2011/11/09/2242272.html
+mysql中使用select for update的必须针对InnoDb，并且是在一个事务中，才能起作用。
+
+求指教带where条件的mysql随机查询n条记录的高效方法-C..._CSDN论坛

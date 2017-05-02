@@ -1,0 +1,108 @@
+python自带系统模块
+
+https://docs.python.org/3/library/
+
+
+1:  Built-in Functions
+
+2:  Built-in Constants
+
+3:  Built-in Types
+
+4:  Built-in Exceptions
+
+5:  Text Processing Services
+
+6:  Binary Data Services
+
+7:  Data types
+
+8:  Numeric and Mathematical Modules
+
+9:  Functional Programming Modules
+
+10: File and Directory Access
+
+11: Data Persistence
+
+12: Data Compression and Archiving
+
+13: File Formats
+
+14: Cryptographic Services
+
+15: Generic Operating System Services
+
+16: Concurrent Execution
+
+17: Interprocess Communication and Networking
+
+18: Internet Data Handling
+
+19: Structured Markup Processing Tools
+
+20: Internet Protocols and Support
+
+21: Multimedia Services
+
+22: Internationalization
+
+23: Program Frameworks
+
+24: Graphical User Interfaces with TK
+
+25: Development Tools
+
+26: Debugging and Profiling
+
+27: Software Packaging and Distribution
+
+28: Python Runtime Services
+
+29: Custom Python Interpreters
+
+30: Importing Modules
+
+31: Python Language Services
+
+32: Miscellaneous Services
+
+33: MS Windows Specific Services
+
+34: Unix Specific Services
+
+35: Superseded Modules
+
+36: Undocumented Modules
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

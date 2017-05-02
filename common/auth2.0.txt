@@ -1,0 +1,56 @@
+auth2.0  OAuth是让第三方应用不需要用户名密码读取用户数据的一个认证过程。
+
+1）Third-party application: 第三方应用程序，本文中又称”客户端“
+2）HTTP service: HTTP服务提供商，本文中简称“服务提供商”
+3）Resource Owner：资源所有者，本文中又称“用户”
+4）User Agent：用户代理，本文中就是浏览器
+5）Authorization server: 认证服务器，即服务提供商专门用来处理认证的服务器
+6）Resource server: 资源服务器，即服务提供商存放用户生成的资源的服务器。它与认证服务器，可以是同一台服务器，也可以是不同的服务器
+
+
+入职1个月：离职与 HR 关系较大;
+入职3个月：离职原因与直接上级关系较大；
+入职6个月：离职原因与企业文化关系较大；
+入职1年： 离职原因与职业晋升关系较大；
+入职3年： 离职原因与发展平台关系较大；
+入职6年： 员工离职的可能性很小。
+
+步骤:
+1）用户打开客户端以后，客户端要求用户给予授权
+2）用户同意给予客户端授权
+3）客户端使用上一步获得的授权，向认证服务器申请令牌
+4）认证服务器对客户端进行认证后，确认无误，同意发放令牌
+5）客户端使用令牌，向资源服务器申请资源
+6）资源服务器确认令牌无误，同意向客户端开放资源
+
+步骤2是关键，客户端必须获得用户的授权(authorization grant), 才能获得令牌(access token)。OAuth 2.0定义了四种授权方式。
+授权码模式(authorization code)
+简化模式(implicit)
+密码模式(resource owner password credentials)
+客户端模式(client credentials)
+
+授权码模式是功能最完整、流程最严密的授权模式。它的特点就是通过客户端的后台服务器，与“服务提供商”的认证服务器进行互动。
+(1) Client初始化协议的执行流程。首先通过HTTP 302来重定向RO用户代理到AS。Client在redirect_uri中应包含如下参数：client_id, scope (描述被访问的资源), redirect_uri (即Client的URI), state (用于抵制CSRF攻击). 此外，请求中还可以包含access_type和approval_prompt参数。当approval_prompt=force时，AS将提供交互页面，要求RO必须显式地批准（或拒绝）Client的此次请求。如果没有approval_prompt参数，则默认为RO批准此次请求。当access_type=offline时，AS将在颁发access_token时，同时还会颁发一个refresh_token。因为access_token的有效期较短（如3600秒），为了优化协议执行流程，offline方式将允许Client直接持refresh_token来换取一个新的access_token。
+
+(2) AS认证RO身份，并提供页面供RO决定是否批准或拒绝Client的此次请求（当approval_prompt=force时）。
+
+(3) 若请求被批准，AS使用步骤(1)中Client提供的redirect_uri重定向RO用户代理到Client。redirect_uri须包含authorization_code，以及步骤1中Client提供的state。若请求被拒绝，AS将通过redirect_uri返回相应的错误信息。
+
+(4) Client拿authorization_code去访问AS以交换所需的access_token。Client请求信息中应包含用于认证Client身份所需的认证数据，以及上一步请求authorization_code时所用的redirect_uri。
+
+(5) AS在收到authorization_code时需要验证Client的身份，并验证收到的redirect_uri与第3步请求authorization_code时所使用的redirect_uri相匹配。如果验证通过，AS将返回access_token，以及refresh_token（若access_type=offline）。
+
+
+初始化启动配置
+
+初始化数据库 mysql redis memcahed
+获取进程TCP IP 端口 
+获取进程监听IP 端口
+注册消息路由
+注册事件
+注册定时器
+redis发布订阅
+
+
+
+

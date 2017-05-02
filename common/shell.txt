@@ -1,0 +1,60 @@
+1: 查看端口
+netstat -apn|grep port
+
+2: 应用程序添加快捷方式
+ls -
+
+3: 查看目录占用空间
+df -lh
+du -h --max-depth=1 /data
+
+4: memcache查看所有的key
+telnet 127.0.0.1 11211
+
+stats items
+
+stats cachedump 3 0
+
+get key
+
+memcache设值
+set key 0 0 9
+123456789
+
+
+5: 查看进程启动时间
+ps axo pid,ppid,comm,pmem,lstart | grep scim
+
+6:  安装VUE
+npm install -g vue-cli
+vue init webpack my-project
+
+cd my-project
+npm install
+npm run dev
+
+
+
+
+
+https://bugs.php.net/bug.php?id=73800
+
+https://nodejs.org/api/net.html#net_socket_settimeout_timeout_callback
+
+
+
+
+https://www.openresty.com.cn/X-WAF-README.html
+
+
+
+
+
+
+
+
+
+
+
+
+
