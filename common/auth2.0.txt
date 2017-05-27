@@ -1,5 +1,7 @@
 auth2.0  OAuth是让第三方应用不需要用户名密码读取用户数据的一个认证过程。
 
+Oath 是指   需要被授权网站A，向用户申请数据来源网站B具体权限的过程
+
 1）Third-party application: 第三方应用程序，本文中又称”客户端“
 2）HTTP service: HTTP服务提供商，本文中简称“服务提供商”
 3）Resource Owner：资源所有者，本文中又称“用户”

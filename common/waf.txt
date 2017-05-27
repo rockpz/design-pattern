@@ -17,8 +17,14 @@ https://www.openresty.com.cn/lua-basic-manual-cn.html
 消息队列
 http://mp.weixin.qq.com/s?__biz=MjM5NjQ5MTI5OA==&mid=2651745274&idx=1&sn=d839735113d06eb4368d42feeffa2239&scene=21#wechat_redirect
 
+精读 Immutable 结构共享
+https://zhuanlan.zhihu.com/p/27133830
+
 麻将
 https://github.com/zuoge85/majiang
+
+javascript函数写法
+https://zhuanlan.zhihu.com/p/27091503
 
 
 Node Standard Library 是我们每天都在用的标准库，如Http, Buffer 模块。

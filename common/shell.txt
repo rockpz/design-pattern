@@ -34,6 +34,9 @@ npm install
 npm run dev
 
 
+7: ssh证书登录
+
+
 
 
 

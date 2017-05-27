@@ -1,0 +1,35 @@
+Python常用科学计算库:
+1. Numpy
+2. Sklearn
+3. Matplotlib
+4. Pandas
+
+机器学习库
+TensorFlow
+
+Tensorflow的基本结构，用法
+多层神经网络(回归 & 分类)
+CNN 卷积神经网络
+RNN 循环神经网络
+LSTM 高级循环神经网络
+Autoencoder 神经网络的非监督学习
+可视化助手 Tensorboard(查看学习结果，参数变化，神经网络结构)
+Batch normalization 批标准化 等等
+
+TensorFlow学习线路：
+1. 看Paper，了解TendsorFlow核心概念
+2. 看官方文档，了解Usage
+3. 参照文档写Demo
+4. 使用TensorBoard加深印象
+5. 搭建分布式TensorFlow
+6. 学习深度学习算法
+7. 写更多的Demo
+8. 学更多的深度学习算法
+9. 写更多的Demo
+10.参与TensorFlow社区讨论
+11.看TensorFlow源码
+
+https://pythonprogramming.net/machine-learning-tutorial-python-introduction/
+https://www.kadenze.com/courses/creative-applications-of-deep-learning-with-tensorflow/info
+
+极客学院上有TensorFlow中文教程
