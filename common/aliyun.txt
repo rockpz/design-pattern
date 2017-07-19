@@ -1,0 +1,33 @@
+815339
+
+pz@ss123
+
+1: centos安装软件
+
+源码安装
+1、找到相应的软件包，比如soft.tar.gz，下载到本机某个目录；
+2、打开一个终端，su -成root用户；
+3、cd soft.tar.gz所在的目录；
+4、tar -xzvf soft.tar.gz //一般会生成一个soft目录
+5、cd soft
+6、./configure
+7、make
+8、make install
+
+rpm安装
+1、下载rpm安装包
+2、rpm -ivh  *.rpm
+
+yum安装mysql
+从最新版本的linux系统开始，默认的是 Mariadb而不是mysql！
+使用系统自带的repos安装很简单：
+yum install mariadb mariadb-server
+systemctl start mariadb ==> 启动mariadb
+systemctl enable mariadb ==> 开机自启动
+mysql_secure_installation ==> 设置 root密码等相关
+mysql -uroot -p123456 ==> 测试登录！
+
+
+
+github
+https://github.com/nqdeng/7-days-nodejs/

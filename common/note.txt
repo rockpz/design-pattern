@@ -26,3 +26,9 @@ ttype = 5  金牛场
 硬件
 工具软件
 农业
+
+
+
+insert into `jinhua_logs`.`user_play_log_201706` set (round,is_fold,call_count,raise_count,blood_count,compare_count,card_type,service_charge,coins_bet,coins_win,coins_user) values(0,1,0,0,0,6,200,100,150,7591860,?)
+
+
