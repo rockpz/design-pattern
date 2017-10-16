@@ -1,0 +1,9 @@
+10-16
+源代码转换为书籍的工具
+https://github.com/agentzh/code2ebook 
+将 Gitbook 转为 PDF
+https://www.zhihu.com/question/24428806
+
+export的含义
+export PATH=/Applications/calibre.app/Contents/MacOS:$PATH
+calibre  书籍转换工具
