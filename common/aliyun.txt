@@ -31,3 +31,9 @@ mysql -uroot -p123456 ==> 测试登录！
 
 github
 https://github.com/nqdeng/7-days-nodejs/
+
+百亿级实时消息推送的实战之道，与王者荣耀一班车就是这么稳
+https://zhuanlan.zhihu.com/p/27891049
+
+道哥的黑板报
+http://chuansong.me/n/1552058714109
