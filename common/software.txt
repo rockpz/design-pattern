@@ -80,11 +80,10 @@ root     14126 14125  3 Jan01 pts/5    1-10:51:53 /data/project/t_proxy/rel/t_pr
 npm install eslint-config-airbnb eslint@^3.15.0 eslint-plugin-jsx-a11y@^3.0.2 eslint-plugin-import@^2.2.0 eslint-plugin-react@^6.9.0 -g
 
 
-5:  下载Atom
-https://github.com/atom/atom/releases/tag/v1.12.7
 
- Visual Studio 2017 Key
-Enterprise:
-NJVYC-BMHX2-G77MM-4XJMR-6Q8QF
-Professional
-KBJFW-NXHK6-W4WJM-CRMQB-G3CDH
+AI 实在是太弱了，而现在大厂里面也仅仅是在做玩具而已，小冰小娜小什么什么的，然而在一些小的方面人工智能确实取得了可喜的进步，广告搜索推荐这三种系统还有图像识别和语音识别已经取得了相当大的进展，然而最后的语义理解确实不能做到，而且在现有方法论下不存在突破的可能。一种技术有没有价值最终要看有多少市场，语音转文字，车载语音操作，智能家居语音操作，英语口语陪练，车牌识别，有道词典用照相机查单词这些简单的AI确实已经实现，并且拥有很大的市场，而各大互联网公司的推荐系统和反作弊系统也在不断增强自身能力，实现更多价值，这些也都算是AI的一些用处。发现生活中的不便并且用ai进行优化然后作为某种产品的附属功能提高原产品竞争力是将来 AI 的一种可行通道。比如给洗衣机电饭煲增加声控的功能，增强汽车飞机巡航的智能程度和安全预警能力，增强安保系统的判断能力，在各个方面减弱人类工作的强度而非消灭人类的工作，以一种渐进的姿态改变人类生活。
+
+作者：匿名用户
+链接：https://www.zhihu.com/question/57935491/answer/155180515
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
