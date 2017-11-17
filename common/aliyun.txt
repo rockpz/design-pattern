@@ -37,3 +37,29 @@ https://zhuanlan.zhihu.com/p/27891049
 
 道哥的黑板报
 http://chuansong.me/n/1552058714109
+
+#### 更新 models
+app.modelPath(__dirname + '/../models', function (name, model) {global.model = app.model = (app.model || {});global.model[name] = model;var ret = {};ret[name] = model;return ret;});
+
+#### 更新 controller
+app.actionPath(__dirname + '/controller', function (act, mod) {var cmd2model = {};var actSplit = act.split('/');var cmd = actSplit[actSplit.length - 1];cmd2model[cmd] = mod;return cmd2model;});
+
+#### 更新事件
+app.onEventPath(__dirname + '/../events');
+
+### 更新配置
+app.configPath(__dirname + '/../config');
+
+### 更新单个controller里的某个方法
+var p = "/data/texas_v1/game/controller/room.js";var m = require(p);delete require.cache[p];app._actions["debug_long"] = m.debug_long;
+
+### 更新单个model的某一个方法
+var p = "/data/texas_v1/game/models/user.js";var m = require(p);delete require.cache[p];app._models["user"].findUser = m.findUser;
+
+### 更新单个events的某一个方法
+var p = "/data/texas_v1/game/events/", f = "message_center.js"; p += f;var m = require(p);delete require.cache[p];app.onEvent("publisher", f, m.publisher)
+
+
+
+var p = "/data/node/zhajinhua/models/game.js";var m = require(p);delete require.cache[p];app.model.game.gameFinal = m.gameFinal;
+

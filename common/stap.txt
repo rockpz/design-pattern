@@ -1,0 +1,10 @@
+systemstap安装：
+centos
+sudo yum install yum-utils
+sudo yum install kernel-devel
+sodu yum install systemtap
+sodu debuginfo-install kernel
+ubuntu
+sudo apt-get install systemtap
+查看是否安装成功
+sudo stap -ve 'probe begin { log("hello Systemtap!") exit() }'

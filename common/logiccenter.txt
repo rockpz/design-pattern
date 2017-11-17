@@ -91,7 +91,31 @@ Hi，你的评论一针见血 :D 1. 2. 的确都是行为树的缺点，我们�
 便于将当前行为、决策目标二者进行平衡。
 
 
+日志系统
+监控系统
+代码模块化
+桌子  游戏  玩家
 
+mysql  redis  memcached
+
+
+
+update niuniu.niuniu_tables set min_coins=1000, chips=500, service_charge=300, credit=1.5 where ttype=1 and tlevel = 1 and tid > 0;
+update niuniu.niuniu_tables set min_coins=5000, chips=1000, service_charge=500, credit=2.5 where ttype=1 and tlevel = 2 and tid > 0;
+update niuniu.niuniu_tables set min_coins=15000, chips=2000, service_charge=1000, credit=6 where ttype=1 and tlevel = 3 and tid > 0;
+update niuniu.niuniu_tables set min_coins=50000, chips=10000, service_charge=3000, credit=24 where ttype=1 and tlevel = 4 and tid > 0;
+update niuniu.niuniu_tables set min_coins=1000, chips=30, service_charge=300, credit=1.5 where ttype=2 and tlevel = 1 and tid > 0;
+update niuniu.niuniu_tables set min_coins=5000, chips=50, service_charge=500, credit=2.5 where ttype=2 and tlevel = 2 and tid > 0;
+update niuniu.niuniu_tables set min_coins=12000, chips=100, service_charge=800, credit=6.4 where ttype=2 and tlevel = 3 and tid > 0;
+update niuniu.niuniu_tables set min_coins=100000, chips=1500, service_charge=9000, credit=72 where ttype=2 and tlevel = 4 and tid > 0;
+update niuniu.niuniu_tables set min_coins=1000, chips=500, service_charge=300, credit=1.5 where ttype=4 and tlevel = 1 and tid > 0;
+update niuniu.niuniu_tables set min_coins=5000, chips=1000, service_charge=500, credit=2.5 where ttype=4 and tlevel = 2 and tid > 0;
+update niuniu.niuniu_tables set min_coins=15000, chips=2000, service_charge=1000, credit=8 where ttype=4 and tlevel = 3 and tid > 0;
+update niuniu.niuniu_tables set min_coins=50000, chips=10000, service_charge=3000, credit=24 where ttype=4 and tlevel = 4 and tid > 0; 
+update niuniu.niuniu_tables set min_coins=1000, chips=100, service_charge=200, credit=1 where ttype=5 and tlevel = 1 and tid > 0;
+update niuniu.niuniu_tables set min_coins=6000, chips=300, service_charge=500, credit=2.5 where ttype=5 and tlevel = 2 and tid > 0;
+update niuniu.niuniu_tables set min_coins=20000, chips=500, service_charge=4000, credit=20 where ttype=5 and tlevel = 3 and tid > 0;
+update niuniu.niuniu_tables set min_coins=100000, chips=1000, service_charge=8000, credit=64 where ttype=5 and tlevel = 4 and tid > 0;
 
 
 

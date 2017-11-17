@@ -91,23 +91,6 @@ TCP有序，UDP无序；
 除了多线程、反序列化以外，反射也会对单例造成破坏。
 
 
-礼物操作的sql是有问题的
-main
-mysql -h10.10.122.40 -ugamehall_user -pA6ha37809dbfcE1
-
-logdb
-mysql -h10.10.129.20 -ugamehall_user -pA6ha37809dbfcE1
-
-stats
-mysql -h10.10.129.20 -ugamehall_user -pA6ha37809dbfcE1
-
-cms
-mysql -h10.10.122.40 -ugamehall_user -pA6ha37809dbfcE1
-
-
-select * from props where proptype=1 and gameid in (0, 1);
-
-
 producer consumer broker  每个组件细讲如何实现能够讲很多，比如producer如何保证消息高效发送，保证消息不丢。broker如何保证顺序队列，partition策略，消息是推还是consumer拉的？
 如何保证消息一定会被消费。如何实现消息生命周期的可视化，便于排查问题。实现一个MQ遇到的问题比你想象放入多得多。
 生产者消费者，交换，路由
@@ -207,108 +190,6 @@ Master-Master架构下数据的一致性是个很大的问题。两个数据中�
 
 
 
-
-牛牛博乐服务器
-global.__table[844]
->>>>>>>>>>>>>>>>>>>>>>>>
-------------------------
-{ tid: 844,
-  user: [ 522647 ],
-  buying: {},
-  dealer: 0,
-  turnNumber: 0,
-  chatHistory: [],
-  status: -400,
-  info:
-   { tid: 844,
-     tname: '乡村酒馆',
-     ttype: 2,
-     tlevel: 1,
-     chips: 25,
-     tplayernow: 1,
-     min_coins: 1000,
-     max_coins: 0,
-     maxnum: 5,
-     service_charge: 160,
-     coins_pool: 0,
-     auto_stand: 2,
-     gap_sec: 29,
-     chipintime: 0,
-     svr_id: 1,
-     tstatus: 0,
-     uid: 0,
-     password: '0',
-     max_bet: 0,
-     game_count: 0,
-     watch_count: 0,
-     pk_count: 0,
-     min_coin_inroom: 0,
-     min_coin_apply_dealer: 0 },
-  restTime: 9,
-  userLen: 1,
-  seat: [],
-  seatLen: 0,
-  dealerCoins: 0,
-  dealerList: [],
-  dealerSource: 2,
-  isNew: 0 }
->
-global.__game[844]
->>>>>>>>>>>>>>>>>>>>>>>>
-------------------------
-{ tid: 844,
-  ttype: 2,
-  user: [ 482219, 522544, 523545, 524252 ],
-  userCard:
-   { '482219': [ 523, 513, 516, 261, 1032 ],
-     '522544': [ 779, 1033, 772, 524, 1025 ],
-     '523545': [ 1030, 514, 769, 778, 519 ],
-     '524252': [ 1035, 517, 1034, 776, 1026 ] },
-  dealer: '482219',
-  gameStartTime: 1498300459133,
-  gameEndTime: 1498300488142,
-  sendCardTime: 1498300460136,
-  pkTime: { '482219': 24, '522544': 21, '523545': 23 },
-  pkExt: {},
-  userAct: { '482219': 1, '522544': 1, '523545': 1 },
-  autoActCount: {},
-  userDealerTimes: { '482219': 4, '522544': 0, '523545': 0, '524252': 0 },
-  userTimes: { '522544': 5, '523545': 5, '524252': 5 },
-  userBet: {},
-  typeBet: {},
-  dealerCoins: 0,
-  userBetCoins: {},
-  userBetTotal: 0,
-  watchCard: {},
-  gameUids: [],
-  betUser: 0,
-  gameBetCount: 0,
-  userBetCount: {},
-  pkUids: [],
-  betCoins: 0,
-  betToEnd: {},
-  userStatus: {},
-  clear: {},
-  betFull: 0,
-  userBetFull: {},
-  userBetType: {},
-  freeBet: {},
-  freeBetNum: 0,
-  boxBetSum: {},
-  actPlayers: [ 482219, 522544, 523545, 524252 ],
-  actionHistory: {},
-  userLen: 4,
-  typeBetTotal: 0,
-  status: -400,
-  gameID: '844_1498300459133',
-  gamePlayTime: 29009,
-  gamePlaySec: 29,
-  pkInfo:
-   { winners: [],
-     losers: [ '522544', '523545', '524252' ],
-     tps: { '482219': 8, '522544': 4, '523545': 6, '524252': 5 } } }
-
-
 分布式事务典型处理方式
 http://kaimingwan.com/post/fen-bu-shi/fen-bu-shi-shi-wu-de-dian-xing-chu-li-fang-shi-2pc-tcc-yi-bu-que-bao-he-zui-da-nu-li-xing
 
@@ -318,17 +199,26 @@ https://m.aliyun.com/yunqi/articles/57900
 说明书
 https://github.com/agentzh/code2ebook
 
+红黑树
+1、每个节点不是红色就是黑色
+2、根节点为黑色
+3、如果节点为红色，其子节点必须为黑色
+4、任意一个节点到NULL(树尾端)的任何路径，所含的黑色节点必须相同
+红黑树一个很重要的特性是每次更新操作的旋转次数为O(1)；
 
+跳跃表
+determistic skiplist
 
-
-
-
-
-
-
-
-
-
+nginx红黑树：
+typedef struct ngx_rbtree_node_s ngx_rbtree_node_t;
+struct ngx_rbtree_node_s {
+  ngx_rbtree_key_t  key;     //节点的key,用于二分查找
+  ngx_rbtree_node_t *left;   //左子节点
+  ngx_rbtree_node_t *right;  //右子节点 
+  ngx_rbtree_node_t *parent; //父节点
+  u_char            color;   //颜色
+  u_char            data;    //节点数据，只有一个字节，通常无意义
+};
 
 
 

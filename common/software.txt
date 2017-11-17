@@ -87,3 +87,22 @@ AI 实在是太弱了，而现在大厂里面也仅仅是在做玩具而已，�
 链接：https://www.zhihu.com/question/57935491/answer/155180515
 来源：知乎
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+
+
+
+
+
+
+
+update jinhua.jinhua_tables set min_coins=1000, chips=100, service_charge=200, cent=1, max_bet=2000, bet_coins1=200, bet_coins2=300, bet_coins3=400, bet_coins4=500, xuepin_coins=1000, xuepin_yhcoins=1 where ttype = 1 and tlevel = 1 and tid > 0;
+update jinhua.jinhua_tables set min_coins=6000, chips=300, service_charge=400, cent=2, max_bet=6000, bet_coins1=600, bet_coins2=900, bet_coins3=1200, bet_coins4=1500, xuepin_coins=3000, xuepin_yhcoins=1 where ttype = 1 and tlevel = 2 and tid > 0;
+update jinhua.jinhua_tables set min_coins=30000, chips=600, service_charge=1000, cent=6, max_bet=12000, bet_coins1=1200, bet_coins2=1800, bet_coins3=2400, bet_coins4=3000, xuepin_coins=6000, xuepin_yhcoins=2 where ttype = 1 and tlevel = 3 and tid > 0;
+update jinhua.jinhua_tables set min_coins=50000, chips=800, service_charge=1500, cent=9, max_bet=16000, bet_coins1=1600, bet_coins2=2400, bet_coins3=3200, bet_coins4=4000, xuepin_coins=8000, xuepin_yhcoins=2 where ttype = 1 and tlevel = 4 and tid > 0;
+update jinhua.jinhua_tables set min_coins=5000, chips=200, service_charge=300, cent=1.5, max_bet=4000, bet_coins1=400, bet_coins2=600, bet_coins3=800, bet_coins4=1000, xuepin_coins=2000, xuepin_yhcoins=1 where ttype = 2 and tlevel = 1 and tid > 0;
+update jinhua.jinhua_tables set min_coins=10000, chips=400, service_charge=800, cent=4, max_bet=8000, bet_coins1=800, bet_coins2=1200, bet_coins3=1600, bet_coins4=2000, xuepin_coins=4000, xuepin_yhcoins=1 where ttype = 2 and tlevel = 2 and tid > 0;
+update jinhua.jinhua_tables set min_coins=50000, chips=1000, service_charge=1500, cent=9, max_bet=20000, bet_coins1=2000, bet_coins2=3000, bet_coins3=4000, bet_coins4=5000, xuepin_coins=10000, xuepin_yhcoins=1 where ttype = 2 and tlevel = 3 and tid > 0;
+update jinhua.jinhua_tables set min_coins=70000, chips=2000, service_charge=2500, cent=15, max_bet=40000, bet_coins1=4000, bet_coins2=6000, bet_coins3=8000, bet_coins4=10000, xuepin_coins=20000, xuepin_yhcoins=1 where ttype = 2 and tlevel = 4 and tid > 0;
+
+
+
