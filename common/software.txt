@@ -65,6 +65,16 @@ pm2 start main.js --name "name"
 https://cnodejs.org/topic/52dcc0a578990b04112e2f09
 
 
+4: Node.js perf  火焰图
+http://www.jianshu.com/p/c62dac29c8d4
+//高并发性能调试经验分享
+https://zhuanlan.zhihu.com/p/21348220
+因为设计导致的 bug 用日志是一种比较通用的调试方法，IO 慢的问题可以把日志写入到一个 mmap 打开的文件中（mmap 不支持调整文件大小，需要预先分配好空间），如果进程崩溃了系统会自动把 mmap 后的内存写入到文件里，不会丢失。
+
+5: openresty kafka
+http://hot66hot.iteye.com/blog/2291916
+
+
 /data/project/t_proxy/rel/t_proxy/bin/t_proxy start
 /data/project/t_proxy/rel/t_proxy/bin/t_proxy stop
 

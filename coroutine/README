@@ -1,0 +1,17 @@
+协程C/C++实现
+协程是一种用户态的轻量级线程。
+具备协程语义的语言：
+重量级: C#      erlang  golang
+轻量级: python  lua     javascript  ruby
+函数式: scala   sheme
+
+C/C++不直接支持协程语义，开源的协程库:
+Protothreads:   https://coolshell.cn/articles/10975.html
+libco:          http://code.tencent.com/libco.html
+coroutine:      https://blog.codingnow.com/2012/07/c_coroutine.html
+
+四种实现协程的方式:
+第一种: 利用glibc的ucontext组件
+第二种: 利用汇编代码来切换上下文(http://www.cnblogs.com/sniperHW/archive/2012/06/19/2554574.html)
+第三种: 利用C语言语法switch-case的奇淫技巧来实现(Protothreads)
+第四种: 利用C语言的setjmp和longjmp(要求函数里面使用static local变量来保存协程内部的数据)，http://www.cnblogs.com/Pony279/p/3903048.html
