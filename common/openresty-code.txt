@@ -234,7 +234,7 @@ ngx_http_parse_request_line
 ngx_http_parse_header_line
 ngx_http_process_request_headers
 ngx_http_process_host
-ngx_http_process_request
+ngx_http_process_request  //读取了完整的请求头
 ngx_http_handler
 ngx_http_core_run_phases
 ngx_http_core_rewrite_phase
@@ -245,6 +245,7 @@ ngx_http_core_post_access_phase
 ngx_http_core_content_phase
 
 ngx_http_core_main_conf_t有两个phase相关的成员变量,在ngx_http_block函数中，依次调用了各模块的 postconfiguration 函数，而玄机就在这些模块的postconfiguration函数里
+
 
 
 12:  http配置结构  ngx_http_core.module.h
@@ -592,5 +593,77 @@ struct ngx_module_s {
     uintptr_t             spare_hook7;
 };
 
+13: http请求处理阶段
+ngx_http_core_generic_phase
+ngx_http_core_rewrite_phase
+ngx_http_core_find_config_phase
+ngx_http_core_post_rewrite_phase
+ngx_http_core_access_phase
+ngx_http_core_post_access_phase
+ngx_http_core_try_files_phase
+ngx_http_core_content_phase
 
+14: nginx core
+数据结构  日志系统  网络模块   加解密  内存池  线程池  基本业务逻辑  文件系统  基础功能模块
+nginx.c          //入口文件 
+ngx_array.c      //数组
+ngx_buf.c        //缓冲区
+ngx_conf_file.c  //配置文件相关
+ngx_config.h     //没有c文件 兼容各种系统平台，提供统一的接口
+ngx_connection.c //网络连接
+ngx_core.h       //包含整个core文件夹内对外提供的接口
+ngx_cpuinfo.c    //没有头文件
+ngx_crc32.c      //循环冗余校验 保证数据存储和数据通讯中数据正确
+ngx_crypt.c      //加密
+ngx_cycle.c      //ngx_cycle_t操作
+ngx_file.c       //文件操作
+ngx_hash.c       //哈希表
+ngx_inet.c       //
+ngx_list.c       //链表
+ngx_log.c        //
+ngx_md5.c        //
+ngx_module.c     //
+ngx_murmurhash.c //
+ngx_open_file_cache.c  //
+ngx_output_chain.c     //没有头文件
+ngx_palloc.c     //
+ngx_parse.c      //
+ngx_parse_time.c //
+ngx_proxy_protocol.c   //
+ngx_queue.c      //队列
+ngx_radix_tree.c //基数树 geo模块有用到 根据IP对变量进行赋值
+ngx_rbtree.c     //红黑树
+ngx_regex.c      //
+ngx_resolver.c   //
+ngx_rwlock.c     //
+ngx_sha1.c       //
+ngx_shmtx.c      //
+ngx_slab.c       //
+ngx_spinlock.c   //没有头文件
+ngx_string.c     //
+ngx_syslog.c     //
+ngx_thread_pool.c      //
+ngx_times.c      //
 
+15: 网络模块结构体
+ngx_listening_s  //设置socket监听
+ngx_connection_s //存储连接信息和读写事件
+
+16: 文件结构层次
+http://blog.csdn.net/chenhanzhun/article/details/42742097
+实现对各模块的整体控制，入口文件
+基本数据结构及其操作
+基本配置管理
+网络连接管理
+定义头文件和结构别名
+CRC校验表信息
+实现对系统运行过程参数、资源的通用管理
+文件操作
+日志输出和管理
+hash字符串操作
+内存管理
+pcre上层封装
+反向代理协议信息
+正则表达式
+时间获取管理
+杂集   ngx_resolver  ngx_sha1 ngx_spinlock  ngx_crypt

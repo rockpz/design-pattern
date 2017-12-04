@@ -40,6 +40,7 @@ npm run dev
 8: git命令
 git checkout -b develop     本地创建一个新分支
 git push --set-upstream origin develop   将本地分支推送到远程
+git remote show origin      显示远程仓库信息
 
 9: 复制文件夹
 说明: cp指令用于复制文件或目录，如同时指定两个以上的文件或目录，且最后的目的地是一个已经存在的目录，则它会把前面指定的所有文件或目录复制到此目录中。若同时指定多个文件或目录，而最后的目的地并非一个已存在的目录，则会出现错误信息
@@ -65,6 +66,9 @@ git push --set-upstream origin develop   将本地分支推送到远程
 --help 显示在线帮助
 --sparse=<使用时机> 设置保存希疏文件的时机
 --version 显示版本
+
+10: mysql 
+show create table stats_niuniu_room;   //查看表stats_niuniu_room 的创建语句
 
 
 
