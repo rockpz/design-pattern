@@ -70,6 +70,14 @@ git remote show origin      显示远程仓库信息
 10: mysql 
 show create table stats_niuniu_room;   //查看表stats_niuniu_room 的创建语句
 
+11: 统计端口链接状态
+netstat -n |grep 8000|  awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}'
+TIME_WAIT   814    主动关闭
+CLOSE_WAIT  1      被动关闭
+FIN_WAIT1   1    
+ESTABLISHED 634    正在通信
+SYN_RECV    2
+LAST_ACK    1
 
 
 

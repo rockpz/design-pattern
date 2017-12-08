@@ -8,3 +8,12 @@ ubuntu
 sudo apt-get install systemtap
 查看是否安装成功
 sudo stap -ve 'probe begin { log("hello Systemtap!") exit() }'
+
+
+kong框架解析
+http://cyukang.com/tags/
+启动：
+读取配置文件conf_loader
+prepare_prefix动态生成nginx和serf配置
+serf_signals.start
+nginx_signals.start

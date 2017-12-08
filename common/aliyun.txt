@@ -61,11 +61,13 @@ var p = "/data/texas_v1/game/events/", f = "message_center.js"; p += f;var m = r
 
 
 
-var p = "/data/node/zhajinhua/models/game.js";var m = require(p);delete require.cache[p];app.model.game.gameFinal = m.gameFinal;
+var p = "/data/node/zhajinhua/models/stats.js";var m = require(p);delete require.cache[p];app.model.stats.send = m.send;
 
 var p = "/data/node/niuniu/controller/room.js"; var m = require(p);delete require.cache[p]; app._actions["room/sendProps"]=m.sendProps;
 
 var p = "/data/node/zhajinhua/normal/controller/room.js"; var m = require(p);delete require.cache[p]; app._actions["room/sendProps"]=m.sendProps;
 
 var p = "/data/node/zhajinhua/rascal/controller/room.js"; var m = require(p);delete require.cache[p]; app._actions["room/sendProps"]=m.sendProps;
+
+var p = "/data/node/niuniu/models/send.js"; var m = require(p);delete require.cache[p]; app.model("stats").send=m.send;
 
