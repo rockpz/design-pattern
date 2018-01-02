@@ -731,7 +731,17 @@ ngx_http_init_phase_handlers
 ngx_http_optimize_servers
 
 
+nginx 的所有共享内存，都是在配置文件解析完毕后由 master 负责申请的，worker 进程运行期间每块共享内存大小都是固定的，也不会去申请。
+Top 命令的 SHR 表示的是一个进程使用的共享内存的大小，这些内存可能也被其他的进程使用着
 
+
+21: lua源码
+数据结构
+算法
+词法语法
+GC
+VM
+stack与C语言的交互
 
 
 

@@ -100,22 +100,36 @@ mysql  redis  memcached
 
 
 
-update niuniu.niuniu_tables set min_coins=1000, chips=500, service_charge=300, credit=0.3 where ttype=1 and tlevel = 1 and tid > 0;
-update niuniu.niuniu_tables set min_coins=5000, chips=1000, service_charge=500, credit=0.5 where ttype=1 and tlevel = 2 and tid > 0;
-update niuniu.niuniu_tables set min_coins=15000, chips=2000, service_charge=1000, credit=1 where ttype=1 and tlevel = 3 and tid > 0;
-update niuniu.niuniu_tables set min_coins=50000, chips=10000, service_charge=3000, credit=3 where ttype=1 and tlevel = 4 and tid > 0;
-update niuniu.niuniu_tables set min_coins=1000, chips=30, service_charge=300, credit=0.3 where ttype=2 and tlevel = 1 and tid > 0;
-update niuniu.niuniu_tables set min_coins=5000, chips=50, service_charge=500, credit=0.5 where ttype=2 and tlevel = 2 and tid > 0;
-update niuniu.niuniu_tables set min_coins=12000, chips=100, service_charge=800, credit=0.8 where ttype=2 and tlevel = 3 and tid > 0;
-update niuniu.niuniu_tables set min_coins=100000, chips=1500, service_charge=9000, credit=9 where ttype=2 and tlevel = 4 and tid > 0;
-update niuniu.niuniu_tables set min_coins=1000, chips=500, service_charge=300, credit=0.3 where ttype=4 and tlevel = 1 and tid > 0;
-update niuniu.niuniu_tables set min_coins=5000, chips=1000, service_charge=500, credit=0.5 where ttype=4 and tlevel = 2 and tid > 0;
-update niuniu.niuniu_tables set min_coins=15000, chips=2000, service_charge=1000, credit=1 where ttype=4 and tlevel = 3 and tid > 0;
-update niuniu.niuniu_tables set min_coins=50000, chips=10000, service_charge=3000, credit=3 where ttype=4 and tlevel = 4 and tid > 0; 
-update niuniu.niuniu_tables set min_coins=1000, chips=100, service_charge=200, credit=0.2 where ttype=5 and tlevel = 1 and tid > 0;
-update niuniu.niuniu_tables set min_coins=5000, chips=300, service_charge=500, credit=0.5 where ttype=5 and tlevel = 2 and tid > 0;
-update niuniu.niuniu_tables set min_coins=20000, chips=500, service_charge=4000, credit=4 where ttype=5 and tlevel = 3 and tid > 0;
-update niuniu.niuniu_tables set min_coins=100000, chips=1000, service_charge=8000, credit=8 where ttype=5 and tlevel = 4 and tid > 0;
+update niuniu.niuniu_tables set min_coins=1000, max_coins=30000, chips=600, service_charge=300, credit=0.3 where ttype=1 and tlevel = 1 and tid > 0;
+update niuniu.niuniu_tables set min_coins=20000, max_coins=300000, chips=2000, service_charge=800, credit=0.8 where ttype=1 and tlevel = 2 and tid > 0;
+update niuniu.niuniu_tables set min_coins=50000, chips=5000, service_charge=2000, credit=2 where ttype=1 and tlevel = 3 and tid > 0;
+update niuniu.niuniu_tables set min_coins=200000, chips=20000, service_charge=8000, credit=8 where ttype=1 and tlevel = 4 and tid > 0;
+update niuniu.niuniu_tables set min_coins=1000, max_coins=30000, chips=40, service_charge=300, credit=0.3 where ttype=2 and tlevel = 1 and tid > 0;
+update niuniu.niuniu_tables set min_coins=20000, max_coins=300000, chips=100, service_charge=600, credit=0.6 where ttype=2 and tlevel = 2 and tid > 0;
+update niuniu.niuniu_tables set min_coins=50000, chips=400, service_charge=2000, credit=2 where ttype=2 and tlevel = 3 and tid > 0;
+update niuniu.niuniu_tables set min_coins=200000, chips=2000, service_charge=8000, credit=8 where ttype=2 and tlevel = 4 and tid > 0;
+update niuniu.niuniu_tables set min_coins=1000, max_coins=30000, chips=600, service_charge=300, credit=0.3 where ttype=4 and tlevel = 1 and tid > 0;
+update niuniu.niuniu_tables set min_coins=20000, max_coins=300000, chips=2000, service_charge=800, credit=0.8 where ttype=4 and tlevel = 2 and tid > 0;
+update niuniu.niuniu_tables set min_coins=50000, chips=5000, service_charge=2000, credit=2 where ttype=4 and tlevel = 3 and tid > 0;
+update niuniu.niuniu_tables set min_coins=200000, chips=20000, service_charge=8000, credit=8 where ttype=4 and tlevel = 4 and tid > 0; 
+update niuniu.niuniu_tables set min_coins=1000, max_coins=30000, chips=100, service_charge=300, credit=0.3 where ttype=5 and tlevel = 1 and tid > 0;
+update niuniu.niuniu_tables set min_coins=20000, max_coins=300000, chips=500, service_charge=800, credit=0.8 where ttype=5 and tlevel = 2 and tid > 0;
+update niuniu.niuniu_tables set min_coins=50000, chips=1000, service_charge=4000, credit=4 where ttype=5 and tlevel = 3 and tid > 0;
+update niuniu.niuniu_tables set min_coins=200000, chips=5000, service_charge=8000, credit=8 where ttype=5 and tlevel = 4 and tid > 0;
+
+
+
+
+
+
+update niuniu.niuniu_tables set min_coins=1000, max_coins=30000, chips=40, service_charge=300, credit=0.3 where ttype=2 and tlevel = 1 and tid > 0;
+update niuniu.niuniu_tables set min_coins=20000, max_coins=300000, chips=100, service_charge=800, credit=0.8 where ttype=2 and tlevel = 2 and tid > 0;
+update niuniu.niuniu_tables set min_coins=50000, chips=400, service_charge=4000, credit=4 where ttype=2 and tlevel = 3 and tid > 0;
+update niuniu.niuniu_tables set min_coins=200000, chips=2000, service_charge=10000, credit=10 where ttype=2 and tlevel = 4 and tid > 0;
+
+
+
+
 
 
 

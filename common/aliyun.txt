@@ -59,6 +59,10 @@ var p = "/data/texas_v1/game/models/user.js";var m = require(p);delete require.c
 ### 更新单个events的某一个方法
 var p = "/data/texas_v1/game/events/", f = "message_center.js"; p += f;var m = require(p);delete require.cache[p];app.onEvent("publisher", f, m.publisher)
 
+var p = "/data/node/zhajinhua/normal/events/"; var f = "messageCenter.js"; p += f;var m = require(p);delete require.cache[p];app.onEvent("publisher", f, m.publisher);
+
+var p = "/data/node/zhajinhua/normal/events/messageCenter.js"; var m = require(p);delete require.cache[p];app.__events["publisher"]["essageCenter.js"] = m.publisher;
+
 
 
 var p = "/data/node/zhajinhua/models/stats.js";var m = require(p);delete require.cache[p];app.model.stats.send = m.send;
@@ -69,5 +73,43 @@ var p = "/data/node/zhajinhua/normal/controller/room.js"; var m = require(p);del
 
 var p = "/data/node/zhajinhua/rascal/controller/room.js"; var m = require(p);delete require.cache[p]; app._actions["room/sendProps"]=m.sendProps;
 
+
+
+var p = "/data/node/zhajinhua/models/game.js";var m = require(p);delete require.cache[p];app.model.game.clearUsers = m.clearUsers; app.model.game.gameFinal = m.gameFinal; 
+
+var p = "/data/node/zhajinhua/models/game.js";var m = require(p);delete require.cache[p];app.model.game.assignUserCard = m.assignUserCard; 
+
+
+
+
+
+
+
+
+
+
 var p = "/data/node/niuniu/models/send.js"; var m = require(p);delete require.cache[p]; app.model("stats").send=m.send;
+
+var p = "/data/node/zhajinhua/models/game.js"; var m = require(p); delete require.cache[p]; app.model.game.initGame=m.initGame; var p = "/data/node/zhajinhua/normal/crontabs/robotCardWeight.js"; var m = require(p);  delete require.cache[p]; clearInterval(app._crontabs[m.methodName]); delete app._crontabs[m.methodName]; app._crontabs[m.methodName] = setInterval(m, m.time, app);
+
+
+数据结构
+日志系统
+socket断开
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
