@@ -96,6 +96,77 @@ https://www.openresty.com.cn/X-WAF-README.html
 mysql -h10.10.129.20 -ugamehall_user -p -e 'select * from `gamehall_accountlogs`.memaccountlog_20170801 where type=45'  > 20170801.txt
 
 
+12: ssh免密登录
+/home/SuperAdmin/.ssh/authorized_keys
+./Users/yiihua/.ssh/id_rsa.pub
+id_rsa      id_rsa.pub  known_hosts
+
+13: 从chrome源码看DNS解析过程
+https://zhuanlan.zhihu.com/p/32531969
+
+
+14: 查看进程占用内存
+如果 Virt 稳定，只有 shr 上涨，就我来看并不是个问题。正如 tokers 指出的，Nginx 
+的共享内存只有在进程退出时才释放，所以随着程序运行，shr 自然会不断上涨的（直到用完事先规划好的份额）。 
+这是个预期行为。 
+
+如果你在意到底是哪一块共享内存消耗了 2G，可以在启动 Nginx 的时候加上 strace，记下 mmap 
+MAP_SHARED|MAP_ANONYMOUS 的返回地址，然后通过 pmap -X 
+$pid，就可以查看到每个共享内存分配值和实际使用到值。
+
+
+15: UML建模
+静态建模：系统基础和系统固定框架结构
+类图   class diagram     常用来分析业务概念
+用例图 use case diagram   常用   表示某个(些)用户能够执行哪些功能
+对象图 object diagram     不常用
+构建图 component diagram  偶尔用 表示组件之间的关系
+部署图 deployment diagram 偶尔用 部署软件应用的物理设备信息
+包图   package diagram    不常用
+
+动态建模：描述的是某种行为
+活动图  activity diagram   偶尔用  流程图
+时序图  sequence diagram   常用 一段时间范围内多个对象之间的交互信息，强调信息交互的时间顺序
+状态机图 state machine diagram 偶尔用
+通讯图  communication diagram  不常用
+时间图  不常用
+
+UML类图关系： 
+泛化(generalization) 一种继承关系，指定了子类如何特化父类的所有特征和行为 
+实现(realization)    类和接口的关系，表示类是接口所有特征和行为的实现
+关联(association)    使一个类知道另一个类的属性和方法
+聚合(aggregation)    整体与部分的关系，且部分可以离开整体而单独存在
+组合(composition)    整体和部分的关系，但部分不能离开整体而单独存在
+依赖(dependency)     是一种使用关系，即一个类的实现需要另一个类的协助
+
+16: SSL协议之数据加密过程详解
+https://zhuanlan.zhihu.com/p/32513816
+
+17: 数组操作利器
+forEach
+map
+filter
+reduce
+
+18: koa
+https://chenshenhai.github.io/koa2-note/note/mysql/async.html
+https://blog.innermonkdesign.com/how-to-use-mysql-and-asyncawait-with-your-koa-node-js-application/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
