@@ -1,0 +1,39 @@
+启动配置
+
+初始化全局配置
+
+数据库 mysql
+memcached
+redis
+
+初始化model模块
+初始化event模块
+初始化controller模块
+
+初始化存储在mysql里的配置信息
+任务配置
+礼物配置
+互动表情配置
+...
+
+开启TCP监听端口
+开启UDP监听端口
+开启WSS监听端口
+
+初始化crontabs模块
+
+启动需传入的参数
+id: serverID
+machine: test/pro
+ttype:   玩法
+普通房和癞子房启动时的差异点
+model路径
+event路径
+controller路径
+crontabs路径
+
+
+
+异步方式
+async/await
+

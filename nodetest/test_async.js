@@ -22,18 +22,26 @@ var mysqlPool = promiseMysql.createPool({
     database: "gamehall_main"
 });
 
-async function async_fun(){
-    try{
-        let conn = await mysqlPool.getConnection();
-        let results = await conn.query("select * from game_server");
-        console.log(results);
-        return 
-    } catch(err) {
-        console.log(err);
-        return
-    }
+var  async_fun = async function(){
+    //try{
+    //    let conn = await mysqlPool.getConnection();
+    //    let results = await conn.query("select * from game_server");
+    //    console.log(results);
+    //    return 
+    //} catch(err) {
+    //    console.log(err);
+    //    return
+    //}
+
+    let conn = await mysqlPool.getConnection();
+    let results = await conn.query("select * from game_server");
+    console.log(results);
+    setTimeout(function(){
+        console.log("process exit!")
+        process.exit();
+    }, 3000);
 };
 
-//async_fun(); 
-co(async_fun);
+async_fun(); 
+//co(async_fun);
 console.log("test finished!");
