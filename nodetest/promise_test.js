@@ -67,6 +67,26 @@ somePromise().then(function(d){return data}).then(function(data){});
 比较好的方式不使用then方法的第二个参数，转而使用catch()方法，除非想确认一个异常被抛出
 
 
+var doSomething = function () {
+    return Promise.resolve('foo');
+}
+
+var doSomethingElse = function () {
+    return Promise.resolve('bar')    
+};
+
+Promise.resolve('foo').then(Promise.resolve('bar')).then(function (result) {
+  console.log(result);
+});
+
+Promise.resolve('foo').then(function() {return Promise.resolve('bar')}).then(function (result) {
+  console.log(result);
+});
+
+Promise.resolve('foo').then(function() {Promise.resolve('bar')}).then(function (result) {
+  console.log(result);
+});
+
 Promise.resolve('foo').then(Promise.resolve('bar')).then(function (result) {
   console.log(result);
 });
