@@ -307,6 +307,44 @@ The Structure and Interpretation of Computer Programs
 sicp有什么缺点吗？有！它会让你在精神满足感之余，有一种孤独感。
 https://github.com/jiacai2050/sicp
 
+#13 爬虫
+如果爬虫是涉及大规模网站爬取，效率、可扩展性、可维护性等是必须考虑的因素。
+大规模爬虫爬取涉及诸多问题：多线程并发、I/O机制、分布式爬取、消息通讯、判重机制、任务调度等等，此时语言和所用框架的选取就具有极大的意义
+
+
+
+不是所有的数据库操作都需要等待结果返回，再进行接下来的操作
+封装成统一接口的话，接口参数会变得晦涩，不可取
+memcahedAgent.query("cmd", )
+流行的做法是一个命令对应一个方法
+memcachedAgent.method(param1, param2, callback) {
+    callback();    
+}
+continueDo();
+分两种，一种是不关心返回结果，立即执行后面的逻辑
+另一种是结果返回后再执行后面的逻辑，Promise async/await 解决了这类问题的回调地狱
+如果把原生数据库交互接口Promise化,会不会影响到第一种情况的表达，比如更新数据库中两张表中的数据
+yield A;
+yield B;
+如果是这种情况，使用回调代码会不会更简单清晰一点？
+
+根据渠道来决定某个消息要如何处理
+方法1 消息服务器端带上gameID,具体处理交给客户端
+方法2 服务器端做过滤，此方法不可性。不清楚某个渠道下开放了哪几种游戏
+方法1 是比较好的方案
+
+#14 continuation passing style
+https://blogs.msdn.microsoft.com/ericlippert/2010/10/21/continuation-passing-style-revisited-part-one/
+https://blogs.msdn.microsoft.com/ericlippert/2010/10/22/continuation-passing-style-revisited-part-two-handwaving-about-control-flow/
+https://blogs.msdn.microsoft.com/ericlippert/2010/10/25/continuation-passing-style-revisited-part-three-musings-about-coroutines/
+https://blogs.msdn.microsoft.com/ericlippert/2010/10/26/continuation-passing-style-revisited-part-four-turning-yourself-inside-out/
+https://blogs.msdn.microsoft.com/ericlippert/2010/10/27/continuation-passing-style-revisited-part-five-cps-and-asynchrony/
+
+https://www.quora.com/What-is-continuation-passing-style-in-functional-programming
+that's the core of CPS: functions take a callback argument and we bind their result to an argument of a function rather than a normal variable.
+
+http://matt.might.net/articles/by-example-continuation-passing-style/
+
 
 
 

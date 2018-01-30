@@ -156,6 +156,11 @@ reduce
 https://chenshenhai.github.io/koa2-note/note/mysql/async.html
 https://blog.innermonkdesign.com/how-to-use-mysql-and-asyncawait-with-your-koa-node-js-application/
 
+19: mysql启动失败 
+service mysql start
+/usr/sbin/mysqld: Can't find file: './mysql/plugin.frm' (errno: 13)
+vi /etc/apparmor.d/usr.sbin.mysqld
+
 
 
 

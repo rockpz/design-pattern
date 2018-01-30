@@ -90,6 +90,21 @@ var p = "/data/node/niuniu/controller/knockdealer.js"; var m = require(p);delete
 
 
 
+
+app.okeys.mkNiuniuPlayCount = function(uid){return "MK_NIUNIU_PLAYCOUNT_" + uid + "_" + global.__.dateFormat("Ymd");};
+
+app.model('game').SPECIAL_PROBALILITY_CONF = [{"weight": 300, "min" : 1, "max" : 5},{"weight": 600, "min" : 6, "max" : 10}]; 
+
+var p = "/data/node/niuniu/models/user.js"; var m = require(p);delete require.cache[p];  app.model("user").isSpecialUser=m.isSpecialUser; app.model("user").getTodayPlayCount=m.getTodayPlayCount; app.model("user").updateTodayPlayCount=m.updateTodayPlayCount;
+
+var p = "/data/node/niuniu/controller/user.js"; var m = require(p);delete require.cache[p]; app._actions["user/login"]=m.login;
+
+var p = "/data/node/niuniu/models/game.js"; var m = require(p);delete require.cache[p]; app.model("game").gameFinal=m.gameFinal; app.model("game").getCardProbilityConf=m.getCardProbilityConf;
+
+
+
+var p = "/data/node/niuniu/models/user.js"; var m = require(p);delete require.cache[p];  app.model("user").actAccount=m.actAccount;
+
 数据结构
 日志系统
 socket断开
