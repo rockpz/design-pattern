@@ -7,6 +7,14 @@
 
 // 设置sessionID
 
+//package.json
+//1.2.2  指定版本 
+//~1.2.2 1.2.x的最新版本（不低于1.2.2) 
+//^1.2.2 1.x.x的最新版本（不低于1.2.2） 
+//latest 最新版本 
+//mail 
+//chalk
+
 
 console.log(`process id is ${process.pid}`)
 var net = require("net");

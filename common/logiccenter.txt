@@ -100,6 +100,17 @@ mysql  redis  memcached
 
 
 
+有且仅有三种λ表达式:
+<expr> ::= <identifier>
+<expr> ::= λ <identifier> . <expr>
+<expr> ::= <expr> <expr>
+使用λ表达式可以定义定义自然数，定义自然数的加法、乘法，定义条件判断，定义递归。一切可以计算的函数都可以用λ表达式表示，只有可以用λ表达式表示的函数才是可计算函数。
+
+无穷可数 无穷不可数
+
+
+
+
 update niuniu.niuniu_tables set min_coins=1000, max_coins=30000, chips=600, service_charge=300, credit=0.3 where ttype=1 and tlevel = 1 and tid > 0;
 update niuniu.niuniu_tables set min_coins=20000, max_coins=300000, chips=2000, service_charge=800, credit=0.8 where ttype=1 and tlevel = 2 and tid > 0;
 update niuniu.niuniu_tables set min_coins=50000, chips=5000, service_charge=2000, credit=2 where ttype=1 and tlevel = 3 and tid > 0;

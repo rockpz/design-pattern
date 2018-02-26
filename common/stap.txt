@@ -17,3 +17,8 @@ http://cyukang.com/tags/
 prepare_prefix动态生成nginx和serf配置
 serf_signals.start
 nginx_signals.start
+
+CAP定理
+一致性(Consistency)  所有节点访问同一份最新的数据副本
+可用性(Availability) 对数据更新具备高可用性
+网络分区容忍性(Partition tolerance)  

@@ -34,13 +34,24 @@ var  async_fun = async function(){
     //}
 
     let conn = await mysqlPool.getConnection();
-    let results = await conn.query("select * from game_server");
+    let results = await conn.query("select * from game_server where gameid = 7");
     console.log(results);
-    setTimeout(function(){
-        console.log("process exit!")
-        process.exit();
-    }, 3000);
+    console.log("is async fun");
+    conn.release();
+    //setTimeout(function(){
+    //    console.log("process exit!")
+    //    process.exit();
+    //}, 3000);
 };
+
+mysqlPool.getConnection().then(function(conn){
+    let result = conn.query("select * from game_server where gameid = 7");
+    conn.release();
+    return result;
+}).then(function(rows){
+    console.log(rows);
+    console.log("is promise");
+});
 
 async_fun(); 
 //co(async_fun);

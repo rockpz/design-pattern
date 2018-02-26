@@ -23,3 +23,6 @@ E:  JSON
 动态作用域和词法域的区别？
 
 作用域链和原型链怎么理解？
+
+
+https://github.com/chenshenhai/koa2-note

@@ -345,6 +345,13 @@ that's the core of CPS: functions take a callback argument and we bind their res
 
 http://matt.might.net/articles/by-example-continuation-passing-style/
 
+#15 python java
+Python的自由和灵活即是优点，也有缺点。业务量不大的时候，Python确实比较适合快糙猛的快速迭代，小步快跑。
+Java是久经考验的共产主义战士，有成熟的开发规范和治理模式，保证了大体量多人协作项目的质量和业务稳定性。
+
+#16 缓存失效策略
+对缓存来说，最关键的设计就在于失效策略是什么?
+
 
 
 
