@@ -7,28 +7,61 @@
  */
 "use strict";
 
-const CRCJSON = require('circular-json');
-
-console.mc = console.mc || function() {};
 
 exports.createClient = function (opt) {
-    opt = opt || {};
-    var poolSize = opt.poolSize || 30;
-    var host = opt.host || '127.0.0.1';
-    var port = opt.port || '11211';
-    var memcached = require('memcached');
+    let poolSize = opt.poolSize || 10;
+    let memcached = require('memcached');
     memcached.config.poolSize = poolSize;
-    var conn = new memcached(host + ":" + port,
-        {reconnect: 100, retries: 2, failures: 2, timeout: 300, failuresTimeout: 1000, minTimeout: 100});
+    let client = new memcached(opt.host + ":" + opt.port, {
+        reconnect: 100, 
+        retries: 2, 
+        failures: 2, 
+        timeout: 300, 
+        failuresTimeout: 1000, 
+        minTimeout: 100
+    });
 
-    var oldSet = conn.set;
-    conn.set = function (key, data, cb, lefttime) {
-        if (lefttime == null) lefttime = 259200; //默认修改为3天
-        lefttime = lefttime | 0;
-        cb = cb || function () {};
+    let get = client.get;
+    let set = client.set;
+    let del = client.del;
+
+    client.get = (key) => {
+        return new Promise((resolve, reject) => {
+            get.call(client, key, (err, data) => {
+                if(err) return resolve([err, data]);
+                if('string' != typeof data) {
+                    try {
+                        data = JSON.stringify(data);
+                    } catch (ex) {
+                        data = null;
+                    }
+                }
+                resolve([err, data]);
+            });
+        });
+    };
+
+    client.getJSON = (key) => {
+        return new Promise((resolve, reject) => {
+            get.call(client, key, (err, data) => {
+                if(err) return resolve([err, data]);
+                if('string' == typeof data) {
+                    try {
+                        data = JSON.parse(data);
+                    } catch (ex) {
+                        data = null;
+                    }
+                }
+                resolve([err, data]);
+            });
+        });  
+    };
+
+    client.set = (key, data, lefttime) => {
+        if(null == lefttime) lefttime = 259200;
         if ('string' != typeof data) {
             try {
-                data = CRCJSON.stringify(data)
+                data = JSON.stringify(data)
             } catch (ex) {
                 ex && console.error('mc.set', key, 'ex', ex.message);
                 try {
@@ -39,107 +72,22 @@ exports.createClient = function (opt) {
                 }
             }
         }
-        console.mc('set', key, data, lefttime);
-        return oldSet.call(conn, key, data, lefttime, cb);
-    };
-
-    var oldGet = conn.get;
-    conn.get = function (key, cb) {
-        cb = cb || function () {
-        };
-        return oldGet.call(conn, key, function (err, data) {
-            console.mc('get', key, err || data);
-            if ('string' != typeof data) {
-                data = CRCJSON.stringify(data);
-            }
-            cb(err, data);
-        });
-    };
-
-    conn.getJSON = function (key, cb) {
-        cb = cb || function () {};
-        return conn.get.call(conn, key, function (err, data) {
-            if ('string' == typeof data) {
-                try {
-                    data = CRCJSON.parse(data);
-                } catch (ex) {
-                    ex && console.error('mc.get', key, 'ex', ex.message);
-                    //如果转换错误，说明不是一个JSON格式的字符串
-                    data = null;
-                }
-            }
-            cb(err, data);
-        });
-    };
-
-    var oldIncr = conn.incr;
-    conn.incr = function (key, v, cb, lifetime) {
-        cb = cb || function(){};
-        lifetime = lifetime || 0;
-        oldIncr.call(conn, key, v, function (err , newvalue) {
-            if (err) return cb(err);
-            if (newvalue === false) return conn.add(key, v, lifetime, function (e, f) {
-                if (f) return cb(e, v);
-                cb(e, f);
+        return new Promise((resolve, reject) => {
+            set.call(client, key, data, lefttime, (err, data) => {
+                resolve([err, data]);
             });
-            cb(err, newvalue);
         });
     };
 
-    var oldDecr = conn.decr;
-    conn.decr = function (key, v, cb, lifetime) {
-        cb = cb || function(){};
-        lifetime = lifetime || 0;
-        oldDecr.call(conn, key, v, function (err , newvalue) {
-            if (err) return cb(err);
-            if (newvalue === false) return conn.add(key, v, lifetime, function (e, f) {
-                if (f) return cb(e, v);
-                cb(e, f);
+    client.del = (key) => {
+        return new Promise((resolve, reject) => {
+            del.call(client, key, (err, data) => {
+                resolve([err, data]);
             });
-            cb(err, newvalue);
         });
     };
 
-    conn.setJSON = conn.set;
+    client.delete = client.del;
 
-    conn.delete = conn.del;
-
-    conn.getDuo = function (key, bder, cb, lefttime) {// bder构造器
-        conn.get(key, function (err, data) {
-            if (data == null || data == undefined) {//没有找到数据
-                bder(function (dataIn) {
-                    conn.set(key, dataIn, function (error) {
-                        cb(err, dataIn);
-                    }, lefttime);
-                });
-            } else {
-                cb(err, data);
-            }
-        });
-    };
-
-    conn.getDuoJSON = function (key, bder, cb, lefttime) {// bder构造器
-        conn.getJSON(key, function (err, data) {
-            if (data == null || data == undefined) {//没有找到数据
-                bder(function (dataIn) {
-                    conn.setJSON(key, dataIn, function (error) {
-                        cb(err, dataIn);
-                    }, lefttime);
-                });
-            } else {
-                cb(err, data);
-            }
-        });
-    };
-
-    conn.getDuoJSON = conn.getDuo;
-    return conn;
-};
-
-exports.create = function (opt) {
-    console.log('create mc:', opt);
-    var conn = exports.createClient(opt);
-    return function () {
-        return conn;
-    };
+    return client;
 };

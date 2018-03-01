@@ -1,3 +1,7 @@
+223677
+
+
+
 815339
 
 pz@ss123
@@ -110,7 +114,10 @@ var p = "/data/node/niuniu/models/user.js"; var m = require(p);delete require.ca
 
 var p = "/data/node/zhajinhua/models/cent.js"; var m = require(p);delete require.cache[p];  app.model.cent.initCent=m.initCent;
 
-var p = "/data/node/zhajinhua/models/user.js"; var m = require(p);delete require.cache[p];  app.model.user.addUserCent=m.addUserCent;
+var p = "/data/node/zhajinhua/models/user.js"; var m = require(p);delete require.cache[p];  app.model.user.actAccount=m.actAccount;
+
+var p = "/data/node/zhajinhua/models/user.js"; var m = require(p);delete require.cache[p];  app.model('user').actAccount=m.actAccount;
+
 
 var p = "/data/node/zhajinhua/models/game.js"; var m = require(p);delete require.cache[p];  app.model.game.gameAct=m.gameAct;
 

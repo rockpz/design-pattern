@@ -36,9 +36,16 @@ console.log(gen.next());
 //console.log(foo().next());
 //console.log(foo().next());
 
-Promise 返回一个拥有then方法的对象或函数
-exports 
-Promise().then().catch(); 
+//Promise 返回一个拥有then方法的对象或函数
+//exports 
+//Promise().then().catch(); 
+
+
+asyncFun = async () => {
+    console.log
+    let a = await 10;
+
+};
 
 
 
