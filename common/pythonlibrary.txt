@@ -87,6 +87,9 @@ https://www.tuicool.com/articles/r2iAfa
 //在线流程工具
 https://www.processon.com/diagrams
 
+//20 Ways to do Random Sampling
+https://codereview.stackexchange.com/questions/188610/20-ways-to-do-random-sampling
+
 
 
 
