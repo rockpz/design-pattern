@@ -26,3 +26,14 @@ E:  JSON
 
 
 https://github.com/chenshenhai/koa2-note
+
+callback
+It needs to be a legitimate program.
+It needs to stay suspended unitl the request comes in.
+It needs to way --such as a parameter--to refer to the value from the first interaction.
+
+贪婪算法
+动态规划算法
+分治算法
+回溯算法
+分支限界算法

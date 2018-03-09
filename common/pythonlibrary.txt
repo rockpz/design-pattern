@@ -91,6 +91,80 @@ https://www.processon.com/diagrams
 https://codereview.stackexchange.com/questions/188610/20-ways-to-do-random-sampling
 
 
+openstack基础组件：
+Keystone: 认证服务
+Glance:   镜像服务
+Nova:     计算服务
+Cinder:   块存储服务
+Neutorn:  网络服务
+Swift:    对象存储服务
+
+基础组件之上涌现的新的服务：
+Horizon:    面板服务
+Heat:       编排服务
+Trove:      数据库服务
+Manila:     文件共享服务
+Sahara:     大数据服务
+Mistral:    工作流服务
+Magnum:     容器编排服务
+
+openstack是标准的Python项目，通过setuptools工具管理项目，负责Python模块的安装和分发。想知道一个项目有哪些服务组成，最直接有效的办法就是找到入口函数（main函数）在哪里，只要是标准的基于setuptools管理的项目的所有入口函数都会在项目根目录的setup.cfg文件中定义，console_scripts就是所有服务组件的入口，比如nova（Mitaka版本）的setup.cfg的console_scripts如下:
+
+OpenStack项目通用骨骼脉络
+阅读源码的首要问题就是就要对代码的结构了然于胸，需要强调的是，OpenStack项目的目录结构并不是根据组件严格划分，而是根据功能划分，以Nova为例，compute目录并不是一定在nova-compute节点上运行，而主要是和compute相关(虚拟机操作相关）的功能实现，同样的，scheduler目录代码并不全在scheduler服务节点运行，但主要是和调度相关的代码。不过目录结构并不是完全没有规律，它遵循一定的套路。
+通常一个服务的目录都会包含api.py、rpcapi.py、manager.py，这三个是最最重要的模块。
+api.py： 通常是供其它组件调用的封装库。换句话说，该模块通常并不会由本模块调用，而是类似提供其它服务SDK。比如compute目录的api.py，通常会由nova-api服务的controller调用。
+rpcapi.py：这个是RPC请求的封装，或者说是RPC封装的client端，该模块封装了所有RPC请求调用。
+manager.py： 这个才是真正服务的功能实现，也是RPC的服务端，即处理RPC请求的入口，实现的方法和rpcapi实现的方法一一对应。
+
+对一个虚拟机执行关机操作的流程
+API节点
+nova-api接收用户请求 -> nova-api调用compute/api.py
+-> compute/api调用compute/rpcapi.py -> rpcapi.py向目标计算节点发起stop_instance()RPC请求
+
+计算节点
+收到MQ RPC消息 -> 解析stop_instance()请求 -> 调用compute/manager.py的callback方法stop_instance() -> 调用libvirt关机虚拟机
+
+。
+
+前面提到OpenStack项目的目录结构是按照功能划分的，而不是服务组件，因此并不是所有的目录都能有对应的组件。仍以Nova为例:
+cmd：这是服务的启动脚本，即所有服务的main函数。看服务怎么初始化，就从这里开始。
+db: 封装数据库访问API，目前支持的driver为sqlalchemy，还包括migrate repository。
+conf：Nova的配置项声明都在这里，想看Nova配置的作用和默认值可以从这个目录入手。
+locale: 本地化处理。image: 封装image API，其实就是调用python-glanceclient。
+network: 封装网络服务接口，根据配置不同，可能调用nova-network或者neutron。
+volume: 封装数据卷访问接口，通常是Cinder的client封装，调用python-cinderclient。
+virt: 这是所有支持的hypervisor驱动，主流的如libvirt、xen等。
+objects: 对象模型，封装了所有实体对象的CURD操作，相对直接调用db的model更安全，并且支持版本控制。
+policies： policy校验实现。
+tests: 单元测试和功能测试代码。
+
+另外需要了解的是，所有的API入口都是从xxx-api开始的，RESTFul API是OpenStack服务的唯一入口，也就是说，阅读源码就从api开始。而api组件也是根据实体划分的，不同的实体对应不同的controller，比如servers、flavors、keypairs等，controller的index方法对应list操作、show方法对应get操作、create创建、delete删除、update更新等。
+根据进程阅读源码并不是什么好的实践，因为光理解服务如何初始化、如何通信、如何发送心跳等就不容易，各种高级封装太复杂了。我认为比较好的阅读源码方式是追踪一个任务的执行过程，比如看启动虚拟机的整个流程。因此接下来本文将以创建一台虚拟机为例，一步步分析其过程。
+
+openstack，docker，mesos，k8s什么关系？
+
+OpenStack：公认的云计算IaaS平台，其管理的核心目标对象是机器（虚拟机或物理机），当然也可以管理存储和网络，但那些也大都是围绕着机器所提供的配套资源。近年来容器技术火了之后，OpenStack也开始通过各种方式增加对容器的支持，但目前OpenStack还不被视为管理容器的主流平台。
+Docker：这里我假定你指的是Docker engine（也叫做Docker daemon，或最新的名字：Moby），它是一种容器运行时（container runtime）的实现，而且是最主流的实现，几乎就是容器业界的事实标准。Docker是用来创建和管理容器的，它和容器的关系就好比Hypervisor（比如：KVM）和虚拟机之间的关系。当然，Docker公司对Docker engine本身的定位和期望不仅仅在于在单机上管理容器，所以近年来一直在向Docker engine中加入各种各样的高级功能，比如：组建多节点的Docker集群、容器编排、服务发现，等等。
+Kubernetes（K8s）：搭建容器集群和进行容器编排的主流开源项目（亲爹是Google），适合搭建PaaS平台。容器是Kubernetes管理的核心目标对象，它和容器的关系就好比OpenStack和虚拟机之间的关系，而它和Docker的关系就好比OpenStack和Hypervisor之间的关系。一般来说，Kubernetes是和Docker配合使用的，Kubernetes调用每个节点上的Docker去创建和管理容器，所以，你可以认为Kubernetes是大脑，而Docker是四肢。
+Mesos：哈，终于说到我目前正在做的啦！Mesos是一个通用资源管理平台，它所管理的核心目标对象既不是虚拟机/物理机，也不是容器，而是各种各样的计算资源（CPU、memory、disk、port、GPU等等）。Mesos会收集各个节点上的计算资源然后提供给运行在它之上的应用框架（比如：Spark、Marathon、甚至是Kubernetes）来使用，应用框架可以将收到的计算资源以自己喜欢的任何方式创建成计算任务来完成特定工作（比如：创建一个大数据任务计算个π什么的）。由于容器技术近年来的火热，Mesos也对容器进行非常深层次的支持，它内部完整地实现了一个容器运行时（类似于Docker），所以，上层的应用框架可以方便地把自己的计算任务以容器的方式在Mesos管理的计算集群中运行起来。使用Mesos的门槛相对较高（需要应用框架编写代码调用Mesos的API和其集成），但一旦用起来之后灵活性和可扩展性更高，因为Mesos并不限制应用框架如何使用计算资源（可以以容器的方式使用，也可以是其它方式，比如：传统的进程），主动权完全在应用框架自己手中。作为对比，Kubernetes只能管理容器，所有任务都必须以容器的方式来运行。为了解决门槛较高的问题（当然也是为了赚钱），Mesosphere（Mesos这个开源项目背后的商业公司）推出了DC/OS，其核心就是Mesos加一个内置的应用框架Marathon（可以用做容器编排），能够达到开箱即用的效果，安装好之后立刻就可以创建和管理容器和非容器类的任务了
+
+
+
+
+整合所有资源，动态分配，虚拟主机
+laas
+pass
+
+
+classmethod staicmethod
+
+class 实例化过程
+
+
+functools.partial
+@functools.wraps(f)
+
 
 
 
